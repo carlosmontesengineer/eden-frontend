@@ -1,3 +1,53 @@
-/* You can add global styles to this file, and also import other style files */
-
 @import 'tailwindcss';
+@import './styles/experience.css';
+
+:root {
+  --color-primary: #1d432f;
+  --color-primary-soft: #e7efe5;
+  --color-navy: #0e253b;
+  --color-background: #faf6ec;
+  --color-band: #f1eadf;
+  --color-surface: #fffdf9;
+  --color-text: #223028;
+  --color-muted: #536359;
+  --color-border: #dfd5c2;
+  --color-accent-gold: #c2953b;
+  --color-accent-terracotta: #b76134;
+  --color-sage: #6d8773;
+  --font-heading: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, -apple-system, sans-serif;
+  --font-script: 'Allura', Georgia, serif;
+  --shadow-soft: 0 14px 40px -16px rgba(24, 46, 34, 0.14);
+  --shadow-elevated: 0 24px 60px -20px rgba(14, 37, 59, 0.22);
+}
+
+html,
+body {
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.page-width {
+  width: min(78rem, calc(100% - clamp(2rem, 8vw, 7rem)));
+  margin-inline: auto;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent-gold);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Offset anchor jumps so sticky header doesn't cover section titles */
+section[id],
+div[id] {
+  scroll-margin-top: 5.5rem;
+}

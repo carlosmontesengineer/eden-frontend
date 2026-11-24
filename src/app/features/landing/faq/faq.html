@@ -1,0 +1,31 @@
+<section id="preguntas" class="experience-section page-width faq-layout" aria-labelledby="faq-title" tabindex="-1">
+  <div class="faq-intro">
+    <p class="section-kicker">Resolvemos tus Inquietudes</p>
+    <h2 id="faq-title">Preguntas frecuentes</h2>
+    <p class="section-lead">
+      Todo lo que necesitas saber antes de vivir tu semana de renovación en Pereira.
+    </p>
+
+    <div class="faq-help-card">
+      <strong>¿Tienes una pregunta personal?</strong>
+      <p>Conversa directamente con {{ contact.coordinatorName }} para recibir orientación personalizada.</p>
+      <a [href]="whatsappUrl" target="_blank" rel="noopener noreferrer">
+        Escribir por WhatsApp {{ contact.phoneDisplay }} ↗
+      </a>
+    </div>
+  </div>
+
+  <ul class="question-list">
+    @for (item of questions; track item.question) {
+      <li>
+        <details name="retreat-faq">
+          <summary>
+            <span>{{ item.question }}</span>
+            <span class="chevron" aria-hidden="true">+</span>
+          </summary>
+          <p>{{ item.answer }}</p>
+        </details>
+      </li>
+    }
+  </ul>
+</section>

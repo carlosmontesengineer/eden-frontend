@@ -1,0 +1,40 @@
+<header class="site-header" (keydown.escape)="menuOpen.set(false)">
+  <div class="page-width header-inner">
+    <a class="brand-link" href="#inicio" aria-label="Inicio - Casa de Sanación Posada el Edén" (click)="menuOpen.set(false)">
+      <app-brand-logo theme="dark" />
+    </a>
+
+    <button
+      type="button"
+      class="menu-toggle"
+      aria-controls="main-nav"
+      [attr.aria-expanded]="menuOpen()"
+      (click)="menuOpen.update((open) => !open)"
+    >
+      @if (menuOpen()) {
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M18 6L6 18M6 6l12 12" stroke-linecap="round" />
+        </svg>
+        <span>Cerrar</span>
+      } @else {
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round" />
+        </svg>
+        <span>Menú</span>
+      }
+    </button>
+
+    <nav id="main-nav" aria-label="Navegación principal" [class.open]="menuOpen()">
+      <ul class="nav-list">
+        @for (item of navLinks; track item.href) {
+          <li>
+            <a [href]="item.href" (click)="menuOpen.set(false)">{{ item.label }}</a>
+          </li>
+        }
+      </ul>
+      <button type="button" class="cta-reserve" (click)="onReserve()">
+        Reservar mi Cupo
+      </button>
+    </nav>
+  </div>
+</header>

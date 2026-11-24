@@ -1,0 +1,49 @@
+<section id="guias" class="experience-section page-width" aria-labelledby="guides-title">
+  <div class="section-header section-header--center">
+    <p class="section-kicker">Acompañamiento Integral</p>
+    <h2 id="guides-title">Tus Guías en el Camino</h2>
+    <p class="section-lead">
+      Un acompañamiento integral sostenido por tres pilares de experiencia espiritual, clínica y pastoral.
+    </p>
+  </div>
+
+  <ul class="experience-grid guides-grid">
+    @for (guide of guides; track guide.id) {
+      <li class="experience-card guide-card" [class]="'experience-card guide-card guide-card--' + guide.accent">
+        <div class="guide-emblem">
+          <span class="guide-initials" aria-hidden="true">{{ guide.initials }}</span>
+          <span class="guide-badge" aria-hidden="true">
+            @switch (guide.accent) {
+              @case ('spiritual') {
+                <svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M10 3v14M5 8h10" stroke-linecap="round" />
+                </svg>
+              }
+              @case ('clinical') {
+                <svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M10 15.5s-5.5-3.4-5.5-7a3.2 3.2 0 015.5-2.1A3.2 3.2 0 0115.5 8.5c0 3.6-5.5 7-5.5 7z" />
+                </svg>
+              }
+              @case ('intercessor') {
+                <svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M10 3c2 2.4 2.8 4.4 2.2 6.2a2.5 2.5 0 01-4.4 0C7.2 7.4 8 5.4 10 3z" />
+                  <path d="M5 14c1.5-1.2 8.5-1.2 10 0" stroke-linecap="round" />
+                </svg>
+              }
+            }
+          </span>
+        </div>
+
+        <p class="guide-role">{{ guide.role }}</p>
+        <h3>{{ guide.name }}</h3>
+        <p class="guide-bio">{{ guide.bio }}</p>
+
+        <ul class="guide-tags">
+          @for (tag of guide.highlights; track tag) {
+            <li>{{ tag }}</li>
+          }
+        </ul>
+      </li>
+    }
+  </ul>
+</section>

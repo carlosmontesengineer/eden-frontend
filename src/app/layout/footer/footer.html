@@ -1,0 +1,40 @@
+<footer class="site-footer">
+  <div class="page-width footer-grid">
+    <div class="footer-brand">
+      <app-brand-logo theme="light" />
+      <p class="footer-quote">
+        Un descanso diferente para tu mente, cuerpo y espíritu en el corazón del Eje Cafetero.
+      </p>
+      <p class="footer-badge">Cupos limitados para una experiencia personalizada</p>
+    </div>
+
+    <div class="footer-links">
+      <h3>Explorar el retiro</h3>
+      <ul>
+        <li><a href="#refugio">El Refugio</a></li>
+        <li><a href="#pilares">Los 3 Pilares</a></li>
+        <li><a href="#destinos">Destinos en Colombia</a></li>
+        <li><a href="#itinerario">Itinerario de 7 Días</a></li>
+        <li><a href="#guias">Nuestros Guías</a></li>
+        <li><a href="#reserva">Reserva tu Cupo</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-contact">
+      <h3>Información y Reservas</h3>
+      <p class="contact-name">{{ contact.coordinatorName }}</p>
+      <a class="whatsapp-link" [href]="whatsappUrl" target="_blank" rel="noopener noreferrer">
+        WhatsApp {{ contact.phoneDisplay }} ↗
+      </a>
+      <p class="contact-location">{{ contact.location }}</p>
+      <button type="button" class="footer-cta" (click)="reserveClick.emit()">
+        Solicitar mi Cupo
+      </button>
+    </div>
+  </div>
+
+  <div class="page-width footer-bottom">
+    <p>{{ contact.sanctuaryName }} · Pereira, Risaralda - Colombia</p>
+    <p>Una experiencia viva de fe, psicología espiritual y renovación.</p>
+  </div>
+</footer>

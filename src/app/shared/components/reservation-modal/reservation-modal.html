@@ -1,0 +1,101 @@
+@if (open()) {
+  <div
+    class="modal-backdrop"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="reservation-modal-title"
+    (click)="onBackdropClick($event)"
+    (keydown.escape)="closeModal.emit()"
+  >
+    <div class="modal-panel">
+      <button
+        type="button"
+        class="modal-close"
+        aria-label="Cerrar ventana de reserva"
+        (click)="closeModal.emit()"
+      >
+        ✕
+      </button>
+
+      <p class="modal-kicker">Atención Personalizada · Cupos Limitados</p>
+      <h2 id="reservation-modal-title">Solicitar mi Cupo</h2>
+      <p class="modal-lead">
+        Completa tus datos para enviar una solicitud directa por WhatsApp a
+        <strong>{{ contact.coordinatorName }}</strong> y confirmar próximas fechas disponibles.
+      </p>
+
+      <div class="modal-summary">
+        <span>7 días / 6 noches · Pereira, Colombia</span>
+        <strong>Programa Todo Incluido</strong>
+      </div>
+
+      <form class="modal-form" (submit)="$event.preventDefault()">
+        <label class="field">
+          <span>Nombre completo</span>
+          <input
+            type="text"
+            name="guestName"
+            placeholder="Ej. María Fernanda Gómez"
+            [ngModel]="guestName()"
+            (ngModelChange)="guestName.set($event)"
+          />
+        </label>
+
+        <div class="field-row">
+          <label class="field">
+            <span>Ciudad y país</span>
+            <input
+              type="text"
+              name="origin"
+              placeholder="Ej. Miami, EE. UU. / Bogotá"
+              [ngModel]="origin()"
+              (ngModelChange)="origin.set($event)"
+            />
+          </label>
+
+          <label class="field">
+            <span>Número de cupos</span>
+            <select
+              name="travelers"
+              [ngModel]="travelers()"
+              (ngModelChange)="travelers.set($event)"
+            >
+              <option value="1 persona">1 persona</option>
+              <option value="2 personas">2 personas</option>
+              <option value="3 o más personas">3 o más personas</option>
+            </select>
+          </label>
+        </div>
+
+        <label class="field">
+          <span>¿Alguna consulta sobre fechas o acompañamiento? (opcional)</span>
+          <textarea
+            name="notes"
+            rows="2"
+            placeholder="Cuéntanos en qué mes te gustaría viajar o cualquier inquietud..."
+            [ngModel]="notes()"
+            (ngModelChange)="notes.set($event)"
+          ></textarea>
+        </label>
+
+        <div class="modal-actions">
+          <a
+            class="btn-whatsapp"
+            [href]="whatsappUrl()"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Enviar solicitud por WhatsApp ↗
+          </a>
+          <button type="button" class="btn-copy" (click)="copyMessage()">
+            {{ copied() ? '¡Mensaje copiado!' : 'Copiar mensaje' }}
+          </button>
+        </div>
+      </form>
+
+      <p class="modal-footnote">
+        Contacto directo: {{ contact.phoneDisplay }} · {{ contact.airfareNote }}
+      </p>
+    </div>
+  </div>
+}

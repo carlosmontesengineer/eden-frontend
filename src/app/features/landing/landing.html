@@ -1,0 +1,20 @@
+<div class="landing-shell" id="inicio">
+  <app-header (reserveClick)="openReservationModal()" />
+  <main>
+    <app-hero (reserveClick)="openReservationModal()" />
+    <div class="experience-sections">
+      <app-introduction />
+      <app-pillars />
+      <app-destinations />
+      <app-itinerary />
+      <app-guides />
+      <app-benefits />
+    </div>
+    <app-pricing (reserveClick)="openReservationModal()" />
+    <div class="experience-sections">
+      <app-faq />
+    </div>
+  </main>
+  <app-footer (reserveClick)="openReservationModal()" />
+  <app-reservation-modal [open]="modalOpen()" (closeModal)="closeReservationModal()" />
+</div>

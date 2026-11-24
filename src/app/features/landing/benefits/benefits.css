@@ -1,0 +1,26 @@
+.benefit-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.benefit-icon {
+  display: grid;
+  flex: 0 0 2.9rem;
+  height: 2.9rem;
+  place-items: center;
+  border-radius: 0.85rem;
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+}
+
+.benefit-card h3 {
+  font-size: 1.35rem;
+  margin-bottom: 0.3rem;
+}
+
+.benefit-card p {
+  font-size: 0.93rem;
+  line-height: 1.58;
+  color: var(--color-muted);
+}

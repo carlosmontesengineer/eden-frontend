@@ -1,0 +1,117 @@
+<section id="pilares" class="experience-band" aria-labelledby="pillars-title">
+  <div class="experience-section page-width">
+    <div class="section-header section-header--center">
+      <p class="section-kicker">Sanación Integral</p>
+      <h2 id="pillars-title">Los Pilares de Tu Sanación</h2>
+      <p class="section-lead">
+        Un acompañamiento equilibrado que integra la gracia espiritual, la salud emocional y el descanso físico en la naturaleza.
+      </p>
+    </div>
+
+    <ul class="experience-grid">
+      @for (pillar of pillars; track pillar.id) {
+        <li class="experience-card pillar-card">
+          <div class="pillar-icon-wrap" aria-hidden="true">
+            @switch (pillar.id) {
+              @case ('alma') {
+                <svg viewBox="0 0 28 28" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.9">
+                  <path d="M14 4v20M8 10h12" stroke-linecap="round" />
+                </svg>
+              }
+              @case ('mente') {
+                <svg viewBox="0 0 28 28" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.7">
+                  <path d="M4 8.5c3.5-1.5 7-1 10 1.2 3-2.2 6.5-2.7 10-1.2v12.5c-3.5-1.5-7-1-10 1.2-3-2.2-6.5-2.7-10-1.2V8.5z" />
+                  <path d="M14 9.7V22.2" />
+                  <circle cx="14" cy="6.5" r="2.5" />
+                </svg>
+              }
+              @case ('cuerpo') {
+                <svg viewBox="0 0 28 28" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.7">
+                  <path d="M6 12h12v4a6 6 0 01-12 0v-4z" />
+                  <path d="M18 13h2.2a2.3 2.3 0 010 4.6H18M5 23h14" stroke-linecap="round" />
+                  <path d="M10 8.5c0-1.5 1.5-2 1.5-3.5M14 8.5c0-1.5 1.5-2 1.5-3.5" stroke-linecap="round" />
+                </svg>
+              }
+            }
+          </div>
+
+          <p class="pillar-sub">{{ pillar.subtitle }}</p>
+          <h3>{{ pillar.name }}</h3>
+          <p class="pillar-desc">{{ pillar.description }}</p>
+
+          <ul class="pillar-activities">
+            @for (activity of pillar.activities; track activity) {
+              <li>{{ activity }}</li>
+            }
+          </ul>
+        </li>
+      }
+    </ul>
+
+    <div class="anatomy-box" aria-labelledby="anatomy-title">
+      <div class="anatomy-header">
+        <p class="section-kicker">Arquitectura del Retiro</p>
+        <h3 id="anatomy-title">La Anatomía de un Descanso Perfecto</h3>
+        <p class="anatomy-subtitle">
+          Haz clic en cada círculo o nivel para descubrir cómo el entorno, nuestro equipo y la fe trabajan en armonía.
+        </p>
+      </div>
+
+      <div class="anatomy-grid">
+        <div class="rings-stage" role="group" aria-label="Niveles concéntricos del descanso perfecto">
+          <button
+            type="button"
+            class="anatomy-ring anatomy-ring--outer"
+            [class.active]="activeLayerId() === 'entorno'"
+            (click)="activeLayerId.set('entorno')"
+            [attr.aria-pressed]="activeLayerId() === 'entorno'"
+          >
+            <span class="ring-tag">El Entorno · Naturaleza</span>
+          </button>
+
+          <button
+            type="button"
+            class="anatomy-ring anatomy-ring--middle"
+            [class.active]="activeLayerId() === 'instrumentos'"
+            (click)="activeLayerId.set('instrumentos')"
+            [attr.aria-pressed]="activeLayerId() === 'instrumentos'"
+          >
+            <span class="ring-tag">Los Instrumentos · Facilitadores</span>
+          </button>
+
+          <button
+            type="button"
+            class="anatomy-ring anatomy-ring--inner"
+            [class.active]="activeLayerId() === 'fuente'"
+            (click)="activeLayerId.set('fuente')"
+            [attr.aria-pressed]="activeLayerId() === 'fuente'"
+          >
+            <span class="ring-tag">La Fuente · La Fe Católica</span>
+          </button>
+
+          <div class="ring-core">
+            <span class="core-label">Propósito Central</span>
+            <p>{{ anatomyCore }}</p>
+          </div>
+        </div>
+
+        <div class="anatomy-details">
+          @for (layer of layers; track layer.id) {
+            <button
+              type="button"
+              class="anatomy-item"
+              [class.active]="activeLayerId() === layer.id"
+              (click)="activeLayerId.set(layer.id)"
+              [attr.aria-pressed]="activeLayerId() === layer.id"
+            >
+              <span class="item-badge">{{ layer.ringLabel }}</span>
+              <strong>{{ layer.title }}</strong>
+              <span class="item-sub">{{ layer.subtitle }}</span>
+              <p>{{ layer.description }}</p>
+            </button>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

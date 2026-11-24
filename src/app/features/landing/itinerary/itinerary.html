@@ -1,0 +1,111 @@
+<section id="itinerario" class="experience-band" aria-labelledby="itinerary-title">
+  <div class="experience-section page-width">
+    <div class="section-header section-header--center">
+      <p class="section-kicker">Itinerario Curado Día por Día</p>
+      <h2 id="itinerary-title">El Ritmo de Tu Restauración</h2>
+      <p class="section-lead">
+        Un viaje de 7 días cuidadosamente diseñado para elevar, sanar y renovar tu mente, cuerpo y espíritu.
+      </p>
+    </div>
+
+    <!-- Visual Progression Curve (Inspired by Retreat Rhythm Map) -->
+    <div class="curve-card">
+      <svg
+        class="rhythm-svg"
+        viewBox="0 0 700 185"
+        fill="none"
+        role="img"
+        aria-label="Curva de restauración de 7 días: Aterrizaje, Asombro, Profundidad, Celebración y Paz"
+      >
+        <defs>
+          <linearGradient id="rhythmFill" x1="0" y1="0" x2="700" y2="185" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#6d8773" stop-opacity="0.16" />
+            <stop offset="55%" stop-color="#c2953b" stop-opacity="0.18" />
+            <stop offset="100%" stop-color="#1d432f" stop-opacity="0.32" />
+          </linearGradient>
+        </defs>
+        <path
+          d="M15 174 C90 140, 145 72, 205 74 C265 76, 290 112, 350 112 C415 112, 445 86, 495 68 C545 50, 585 30, 685 20 L685 182 L15 182 Z"
+          fill="url(#rhythmFill)"
+        />
+        <path
+          d="M15 174 C90 140, 145 72, 205 74 C265 76, 290 112, 350 112 C415 112, 445 86, 495 68 C545 50, 585 30, 685 20"
+          stroke="#1d432f"
+          stroke-width="2.5"
+          stroke-linecap="round"
+        />
+        @for (node of curveNodes; track node.day) {
+          <g
+            class="curve-node"
+            [class.active]="selectedDayNumber() === node.day || (node.day === 4 && selectedDayNumber() >= 3 && selectedDayNumber() <= 5)"
+            (click)="selectDay(node.day)"
+          >
+            <circle [attr.cx]="node.x" [attr.cy]="node.y" r="9" class="node-ring" />
+            <circle [attr.cx]="node.x" [attr.cy]="node.y" r="4.5" class="node-core" />
+          </g>
+        }
+      </svg>
+
+      <div class="day-tabs" role="tablist" aria-label="Seleccionar día del itinerario">
+        @for (day of days; track day.day) {
+          <button
+            type="button"
+            role="tab"
+            class="day-tab"
+            [class.active]="selectedDayNumber() === day.day"
+            [attr.aria-selected]="selectedDayNumber() === day.day"
+            (click)="selectDay(day.day)"
+          >
+            <span class="tab-num">Día {{ day.day }}</span>
+            <span class="tab-phase">{{ day.phase }}</span>
+          </button>
+        }
+      </div>
+
+      @let active = currentDay();
+      <article class="day-detail" role="tabpanel" aria-live="polite">
+        <div class="day-detail-head">
+          <div>
+            <div class="day-badges">
+              <span class="badge-day">Día {{ active.day }} de 7</span>
+              <span class="badge-phase">{{ active.phase }}</span>
+            </div>
+            <h3>{{ active.title }}</h3>
+            <p class="day-quote">«{{ active.quote }}»</p>
+          </div>
+
+          <div class="day-stepper">
+            <button
+              type="button"
+              class="step-btn"
+              [disabled]="active.day === 1"
+              (click)="stepDay(-1)"
+              aria-label="Día anterior"
+            >
+              ← Anterior
+            </button>
+            <button
+              type="button"
+              class="step-btn"
+              [disabled]="active.day === days.length"
+              (click)="stepDay(1)"
+              aria-label="Siguiente día"
+            >
+              Siguiente →
+            </button>
+          </div>
+        </div>
+
+        <ul class="activity-timeline">
+          @for (item of active.activities; track item.text) {
+            <li>
+              <span class="activity-time">{{ item.timeLabel }}</span>
+              <span class="activity-dot" aria-hidden="true"></span>
+              <p>{{ item.text }}</p>
+            </li>
+          }
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>

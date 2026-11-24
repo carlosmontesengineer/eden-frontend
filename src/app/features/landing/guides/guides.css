@@ -1,0 +1,91 @@
+.guide-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border-top: 4px solid var(--color-accent-gold);
+}
+
+.guide-card--spiritual {
+  border-top-color: var(--color-navy);
+}
+
+.guide-card--clinical {
+  border-top-color: var(--color-primary);
+}
+
+.guide-card--intercessor {
+  border-top-color: var(--color-accent-gold);
+}
+
+.guide-emblem {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 5.25rem;
+  height: 5.25rem;
+  border-radius: 50%;
+  margin-bottom: 1.15rem;
+  background: linear-gradient(145deg, #f3ecdd 0%, #e4d8c0 100%);
+  border: 2px solid #d5c4a1;
+  color: var(--color-navy);
+}
+
+.guide-initials {
+  font: 700 1.45rem / 1 var(--font-heading);
+  letter-spacing: 0.04em;
+}
+
+.guide-badge {
+  position: absolute;
+  right: -0.15rem;
+  bottom: -0.15rem;
+  display: grid;
+  place-items: center;
+  width: 1.85rem;
+  height: 1.85rem;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: #ffffff;
+  border: 2px solid var(--color-surface);
+}
+
+.guide-role {
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent-terracotta);
+  margin-bottom: 0.25rem;
+}
+
+.guide-card h3 {
+  font-size: clamp(1.45rem, 2.3vw, 1.75rem);
+  margin-bottom: 0.65rem;
+}
+
+.guide-bio {
+  color: var(--color-muted);
+  font-size: 0.94rem;
+  line-height: 1.62;
+}
+
+.guide-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.45rem;
+  margin-top: auto;
+  padding-top: 1.25rem;
+  list-style: none;
+}
+
+.guide-tags li {
+  padding: 0.28rem 0.72rem;
+  border-radius: 999px;
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--color-primary);
+}

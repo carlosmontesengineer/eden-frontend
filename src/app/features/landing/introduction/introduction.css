@@ -1,0 +1,127 @@
+.refuge-section {
+  padding-block: clamp(1.5rem, 4vw, 3rem) clamp(3.5rem, 6vw, 5.5rem);
+  background: var(--color-background);
+}
+
+.refuge-card {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  align-items: stretch;
+  border-radius: 1.75rem;
+  overflow: hidden;
+  background: var(--color-navy);
+  color: #f4f1e8;
+  box-shadow: var(--shadow-elevated);
+}
+
+.refuge-copy {
+  padding: clamp(2rem, 5vw, 4rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.refuge-kicker {
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #d8be86;
+  margin-bottom: 0.9rem;
+}
+
+h2 {
+  font: 700 clamp(2rem, 3.8vw, 3.1rem) / 1.04 var(--font-heading);
+  color: #ffffff;
+  margin-bottom: 1.75rem;
+}
+
+.refuge-list {
+  display: grid;
+  gap: 1.35rem;
+  list-style: none;
+}
+
+.refuge-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.refuge-icon {
+  display: grid;
+  place-items: center;
+  flex: 0 0 2.75rem;
+  height: 2.75rem;
+  border-radius: 0.85rem;
+  background: rgba(216, 190, 134, 0.12);
+  border: 1px solid rgba(216, 190, 134, 0.28);
+  color: #e6cf9b;
+}
+
+.refuge-list p {
+  font-size: 0.98rem;
+  line-height: 1.62;
+  color: rgba(244, 241, 232, 0.88);
+}
+
+.refuge-media {
+  position: relative;
+  min-height: 22rem;
+  padding: clamp(1rem, 2.5vw, 1.75rem);
+  display: flex;
+}
+
+.media-frame {
+  position: relative;
+  width: 100%;
+  border-radius: 1.15rem;
+  overflow: hidden;
+  border: 1px solid rgba(255, 253, 249, 0.18);
+}
+
+.media-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 65% center;
+}
+
+.media-caption {
+  position: absolute;
+  inset-inline: 1rem;
+  bottom: 1rem;
+  display: grid;
+  gap: 0.18rem;
+  padding: 0.9rem 1.1rem;
+  border-radius: 0.85rem;
+  background: rgba(14, 37, 59, 0.78);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 253, 249, 0.16);
+}
+
+.media-caption span {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #e6cf9b;
+}
+
+.media-caption strong {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+@media (max-width: 56rem) {
+  .refuge-card {
+    grid-template-columns: 1fr;
+  }
+
+  .refuge-media {
+    min-height: 18rem;
+    padding-top: 0;
+  }
+}

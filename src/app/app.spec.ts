@@ -1,24 +1,74 @@
 import { TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
+import { RouterTestingHarness } from '@angular/router/testing';
 import { App } from './app';
+import { routes } from './app.routes';
 
 describe('App', () => {
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
+  beforeEach(() => {
+    TestBed.configureTestingModule({
       imports: [App],
-    })
-      .compileComponents();
+      providers: [provideRouter(routes)],
+    });
   });
 
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(App);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+    expect(TestBed.createComponent(App).componentInstance).toBeTruthy();
   });
 
-  it('should render title', async () => {
-    const fixture = TestBed.createComponent(App);
-    await fixture.whenStable();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, eden-frontend');
+  it('renders the hero, guides, and reservation section without displaying a price', async () => {
+    const harness = await RouterTestingHarness.create('/');
+    const landing = harness.routeNativeElement;
+
+    expect(landing?.querySelector('h1')?.textContent).toMatch(/Un Descanso\s*para el\s*Alma/);
+    expect(landing?.querySelector('.primary-link')?.getAttribute('href')).toBe('#reserva');
+    expect(landing?.querySelector('#reserva')?.textContent).toContain('Martha Soraya Facundo');
+    expect(landing?.textContent).not.toMatch(/USD\s*1[.,]590/i);
+    expect(landing?.querySelector('#guias')?.textContent).toContain('Pbro. Alfredo Arias');
+    expect(landing?.querySelector('#guias')?.textContent).toContain('Dr. Yezid Arango');
+    expect(landing?.querySelector('#guias')?.textContent).toContain('Laico José Patiño');
+  });
+
+  it('switches itinerary days interactively when clicking day tabs', async () => {
+    const harness = await RouterTestingHarness.create('/');
+    const landing = harness.routeNativeElement as HTMLElement;
+
+    const tabs = landing.querySelectorAll<HTMLButtonElement>('[role="tab"]');
+    expect(tabs.length).toBe(7);
+    expect(landing.querySelector('.day-detail')?.textContent).toContain('Llegada y Aterrizaje');
+
+    tabs[2].click();
+    harness.detectChanges();
+
+    expect(landing.querySelector('.day-detail')?.textContent).toContain('Peregrinación y Milagros');
+    expect(landing.querySelector('.day-detail')?.textContent).toContain('Basílica del Señor de los Milagros de Buga');
+  });
+
+  it('opens the reservation modal when clicking the header CTA', async () => {
+    const harness = await RouterTestingHarness.create('/');
+    const landing = harness.routeNativeElement as HTMLElement;
+
+    expect(landing.querySelector('[role="dialog"]')).toBeNull();
+
+    const reserveBtn = landing.querySelector<HTMLButtonElement>('.cta-reserve');
+    reserveBtn?.click();
+    harness.detectChanges();
+
+    const dialog = landing.querySelector('[role="dialog"]');
+    expect(dialog).not.toBeNull();
+    expect(dialog?.textContent).toContain('Martha Soraya Facundo');
+  });
+
+  it('switches concentric anatomy layers interactively', async () => {
+    const harness = await RouterTestingHarness.create('/');
+    const landing = harness.routeNativeElement as HTMLElement;
+
+    const outerRing = landing.querySelector<HTMLButtonElement>('.anatomy-ring--outer');
+    expect(outerRing?.getAttribute('aria-pressed')).toBe('false');
+
+    outerRing?.click();
+    harness.detectChanges();
+
+    expect(outerRing?.getAttribute('aria-pressed')).toBe('true');
   });
 });

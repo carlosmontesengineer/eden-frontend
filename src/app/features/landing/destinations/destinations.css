@@ -1,0 +1,189 @@
+.destination-bento {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 1.35rem);
+  list-style: none;
+}
+
+.dest-card {
+  position: relative;
+  min-height: 18.5rem;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: clamp(1.25rem, 2.5vw, 1.75rem);
+  color: #ffffff;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-soft);
+}
+
+.dest-card--cocora {
+  grid-column: span 2;
+  min-height: 21rem;
+}
+
+.dest-card--eden {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  padding: 0;
+  min-height: 19rem;
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+
+.eden-photo {
+  position: relative;
+  min-height: 17rem;
+  overflow: hidden;
+}
+
+.eden-photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 65%;
+}
+
+.eden-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(1.5rem, 3.5vw, 2.5rem);
+}
+
+.eden-info h3 {
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+}
+
+.eden-info p {
+  color: var(--color-muted);
+  font-size: 0.96rem;
+  line-height: 1.65;
+}
+
+.eden-loc {
+  color: var(--color-accent-terracotta);
+}
+
+.dest-card > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.55s ease;
+}
+
+.dest-card:hover img {
+  transform: scale(1.04);
+}
+
+.dest-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(13, 29, 21, 0.08) 18%,
+    rgba(13, 29, 21, 0.52) 55%,
+    rgba(11, 24, 18, 0.88) 100%
+  );
+}
+
+.dest-card--navy {
+  background: linear-gradient(155deg, #0d243b 0%, #173a58 100%);
+  border-color: rgba(216, 190, 134, 0.35);
+  justify-content: space-between;
+}
+
+.dest-card--sage {
+  background: linear-gradient(155deg, #1b432f 0%, #2c6246 100%);
+  border-color: rgba(216, 190, 134, 0.35);
+  justify-content: space-between;
+}
+
+.dest-emblem {
+  color: #e6cf9b;
+  opacity: 0.92;
+}
+
+.dest-content {
+  position: relative;
+  z-index: 1;
+  max-width: 34rem;
+}
+
+.dest-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.55rem;
+}
+
+.dest-day {
+  padding: 0.22rem 0.65rem;
+  border-radius: 999px;
+  background: rgba(194, 149, 59, 0.9);
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.dest-loc {
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #f3e6c7;
+}
+
+.eden-info .eden-loc {
+  color: var(--color-accent-terracotta);
+}
+
+.dest-card:not(.dest-card--eden) h3 {
+  color: #ffffff;
+  font-size: clamp(1.45rem, 2.4vw, 1.85rem);
+  margin-bottom: 0.35rem;
+}
+
+.dest-card:not(.dest-card--eden) p {
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: rgba(255, 253, 249, 0.9);
+}
+
+@media (max-width: 56rem) {
+  .destination-bento {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .dest-card--cocora,
+  .dest-card--eden {
+    grid-column: span 2;
+  }
+
+  .dest-card--eden {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 38rem) {
+  .destination-bento {
+    grid-template-columns: 1fr;
+  }
+
+  .dest-card--cocora,
+  .dest-card--eden {
+    grid-column: auto;
+    min-height: 17rem;
+  }
+}

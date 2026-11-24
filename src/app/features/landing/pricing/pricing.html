@@ -1,0 +1,55 @@
+<section id="reserva" class="pricing-section" aria-labelledby="reserve-title" tabindex="-1">
+  <div class="page-width price-layout">
+    <div class="price-copy">
+      <p class="price-kicker">Cupos Limitados · Atención Personalizada</p>
+      <h2 id="reserve-title">Un descanso diferente para tu mente, cuerpo y espíritu.</h2>
+      <p class="price-lead">
+        Cupos limitados para ofrecer una experiencia íntima, cuidada y personalizada en la Casa de Sanación Posada El Edén.
+      </p>
+
+      <div class="coordinator-box">
+        <span class="coord-label">Atención directa y confirmación de fechas</span>
+        <strong>{{ contact.coordinatorName }}</strong>
+        <a [href]="whatsappUrl" target="_blank" rel="noopener noreferrer">
+          WhatsApp {{ contact.phoneDisplay }} ↗
+        </a>
+      </div>
+    </div>
+
+    <div class="price-card">
+      <span class="package-pill">Retiro Todo Incluido · 7 Días / 6 Noches</span>
+      <h3 class="card-heading">Reserva tu cupo en El Edén</h3>
+      <p class="card-subtitle">
+        Escríbenos para conocer próximas fechas disponibles, modalidad de inscripción y todos los detalles de tu estadía.
+      </p>
+
+      <ul class="included-summary">
+        <li>Estadía completa en Posada El Edén (Pereira)</li>
+        <li>Alimentación tradicional diaria y refrigerios</li>
+        <li>Talleres espirituales, terapia clínica y Eucaristías</li>
+        <li>Traslados aeropuerto-refugio y todas las rutas del itinerario</li>
+        <li>Entradas a termales, basílicas, museos y seguro básico</li>
+      </ul>
+
+      <p class="airfare-note">*{{ contact.airfareNote }}</p>
+
+      <div class="price-actions">
+        <button type="button" class="btn-pill-primary btn-full" (click)="reserveClick.emit()">
+          Solicitar mi Cupo
+        </button>
+        <a
+          class="btn-pill-outline btn-full"
+          [href]="whatsappUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Consultar por WhatsApp ↗
+        </a>
+      </div>
+
+      <div class="faq-jump">
+        <a href="#preguntas">Ver preguntas frecuentes <span aria-hidden="true">↓</span></a>
+      </div>
+    </div>
+  </div>
+</section>
