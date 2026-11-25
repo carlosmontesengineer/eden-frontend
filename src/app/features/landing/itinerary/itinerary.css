@@ -196,15 +196,75 @@
   }
 }
 
-@media (max-width: 36rem) {
+@media (max-width: 42rem) {
   .day-tabs {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    display: flex;
+    overflow-x: auto;
+    gap: 0.5rem;
+    padding-bottom: 0.3rem;
+    margin-bottom: 1.15rem;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .day-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .day-tab {
+    flex: 0 0 auto;
+    min-width: 5.4rem;
+    padding: 0.62rem 0.75rem;
+    scroll-snap-align: center;
+  }
+}
+
+@media (max-width: 36rem) {
+  .curve-card {
+    padding: 1rem;
+    border-radius: 1.2rem;
+  }
+
+  .rhythm-svg {
+    margin-bottom: 0.85rem;
+  }
+
+  .day-detail {
+    padding: 1.15rem;
+    border-radius: 1rem;
+  }
+
+  .day-detail-head {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.9rem;
+    padding-bottom: 1rem;
+  }
+
+  .day-stepper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
+    width: 100%;
+  }
+
+  .step-btn {
+    min-height: 2.75rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .activity-timeline {
+    gap: 0.85rem;
+    margin-top: 1.1rem;
   }
 
   .activity-timeline li {
     grid-template-columns: 1fr;
     gap: 0.2rem;
-    padding-left: 0.85rem;
+    padding-left: 0.9rem;
     border-left: 2px solid var(--color-accent-gold);
   }
 

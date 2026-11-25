@@ -14,17 +14,22 @@
   margin-bottom: 1.15rem;
 }
 
-.pillar-sub {
-  font-size: 0.74rem;
+.pillar-sub,
+.item-badge {
+  font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.11em;
   text-transform: uppercase;
   color: var(--color-accent-terracotta);
+}
+
+.pillar-sub {
   margin-bottom: 0.3rem;
 }
 
 .pillar-desc {
   margin-top: 0.55rem;
+  margin-bottom: 1.15rem;
   color: var(--color-muted);
   font-size: 0.95rem;
   line-height: 1.62;
@@ -110,6 +115,9 @@
   font-weight: 700;
   color: var(--color-primary);
   letter-spacing: 0.03em;
+  text-align: center;
+  max-width: 74%;
+  line-height: 1.15;
 }
 
 .anatomy-ring.active {
@@ -122,6 +130,13 @@
   color: var(--color-accent-terracotta);
 }
 
+.ring-core,
+.anatomy-core-mobile {
+  background: var(--color-navy);
+  color: #fff;
+  text-align: center;
+}
+
 .ring-core {
   position: relative;
   z-index: 2;
@@ -129,12 +144,9 @@
   aspect-ratio: 1;
   border-radius: 50%;
   padding: 1rem;
-  background: var(--color-navy);
-  color: #ffffff;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  text-align: center;
   box-shadow: 0 12px 28px rgba(14, 37, 59, 0.28);
 }
 
@@ -147,10 +159,14 @@
   margin-bottom: 0.35rem;
 }
 
+.ring-core p,
+.anatomy-core-mobile p {
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.92);
+}
+
 .ring-core p {
   font-size: clamp(0.68rem, 1.05vw, 0.78rem);
-  line-height: 1.42;
-  color: rgba(255, 255, 255, 0.92);
 }
 
 .anatomy-details {
@@ -182,14 +198,6 @@
   transform: translateX(4px);
 }
 
-.item-badge {
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--color-accent-terracotta);
-}
-
 .anatomy-item strong {
   font: 700 1.2rem / 1.15 var(--font-heading);
   color: var(--color-primary);
@@ -208,14 +216,48 @@
   color: var(--color-muted);
 }
 
+.anatomy-core-mobile {
+  display: none;
+  padding: 1.2rem;
+  border-radius: 1.15rem;
+  border: 2px solid rgba(230, 207, 155, 0.35);
+  box-shadow: var(--shadow-soft);
+}
+
+.anatomy-core-mobile p {
+  font-size: 0.92rem;
+}
+
 @media (max-width: 56rem) {
+  .pillars-grid,
   .anatomy-grid {
     grid-template-columns: 1fr;
   }
+
+  .anatomy-item.active {
+    transform: none;
+  }
 }
 
-@media (max-width: 34rem) {
+@media (max-width: 38rem) {
+  .anatomy-box {
+    padding: 1.35rem 1.05rem;
+    border-radius: 1.2rem;
+  }
+
+  .anatomy-header {
+    margin-bottom: 1.25rem;
+  }
+
   .rings-stage {
     display: none;
+  }
+
+  .anatomy-core-mobile {
+    display: block;
+  }
+
+  .anatomy-item {
+    padding: 1rem 1.05rem;
   }
 }

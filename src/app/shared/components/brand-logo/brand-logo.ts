@@ -37,7 +37,7 @@ import { Component, input } from '@angular/core';
     .brand-lockup {
       display: inline-flex;
       align-items: center;
-      gap: 0.72rem;
+      gap: clamp(0.5rem, 1.8vw, 0.72rem);
       color: var(--color-primary);
     }
 
@@ -46,8 +46,8 @@ import { Component, input } from '@angular/core';
     }
 
     .brand-monogram {
-      width: 2.65rem;
-      height: 2.65rem;
+      width: clamp(2.15rem, 5.8vw, 2.65rem);
+      height: clamp(2.15rem, 5.8vw, 2.65rem);
       flex: 0 0 auto;
     }
 
@@ -59,18 +59,20 @@ import { Component, input } from '@angular/core';
 
     .brand-name {
       font-family: var(--font-heading);
-      font-size: 0.92rem;
+      font-size: clamp(0.78rem, 2.3vw, 0.92rem);
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
+      white-space: nowrap;
     }
 
     .brand-sub {
       font-family: var(--font-heading);
       font-style: italic;
-      font-size: 0.9rem;
+      font-size: clamp(0.8rem, 2.1vw, 0.9rem);
       font-weight: 500;
       opacity: 0.85;
+      white-space: nowrap;
     }
   `,
 })

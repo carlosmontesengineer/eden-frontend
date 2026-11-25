@@ -70,5 +70,31 @@ describe('App', () => {
     harness.detectChanges();
 
     expect(outerRing?.getAttribute('aria-pressed')).toBe('true');
+    expect(landing.querySelector('.anatomy-core-mobile')?.textContent).toContain(
+      'alineación perfecta de mente, cuerpo y espíritu',
+    );
+  });
+
+  it('toggles the mobile navigation menu and closes the modal on Escape', async () => {
+    const harness = await RouterTestingHarness.create('/');
+    const landing = harness.routeNativeElement as HTMLElement;
+
+    const menuToggle = landing.querySelector<HTMLButtonElement>('.menu-toggle');
+    const nav = landing.querySelector('#main-nav');
+    expect(nav?.classList.contains('open')).toBe(false);
+
+    menuToggle?.click();
+    harness.detectChanges();
+    expect(nav?.classList.contains('open')).toBe(true);
+
+    const reserveBtn = landing.querySelector<HTMLButtonElement>('.cta-reserve');
+    reserveBtn?.click();
+    harness.detectChanges();
+    expect(nav?.classList.contains('open')).toBe(false);
+    expect(landing.querySelector('[role="dialog"]')).not.toBeNull();
+
+    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
+    harness.detectChanges();
+    expect(landing.querySelector('[role="dialog"]')).toBeNull();
   });
 });

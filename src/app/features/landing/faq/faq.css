@@ -98,9 +98,40 @@ details p {
 @media (max-width: 52rem) {
   .faq-layout {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 
   .faq-intro {
     position: static;
+  }
+}
+
+@media (max-width: 38rem) {
+  .faq-help-card {
+    margin-top: 1.15rem;
+    padding: 1.1rem 1.15rem;
+  }
+
+  .faq-help-card a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.5rem;
+  }
+
+  details {
+    padding: 0 1rem;
+    border-radius: 0.9rem;
+  }
+
+  summary {
+    padding: 1rem 0;
+    font-size: 0.94rem;
+    line-height: 1.4;
+    gap: 0.75rem;
+  }
+
+  details p {
+    font-size: 0.9rem;
+    line-height: 1.6;
   }
 }

@@ -1,4 +1,4 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, ElementRef, computed, inject, signal } from '@angular/core';
 import { ITINERARY_DAYS } from '../../../core/data/retreat.data';
 
 @Component({
@@ -7,6 +7,8 @@ import { ITINERARY_DAYS } from '../../../core/data/retreat.data';
   styleUrl: './itinerary.css',
 })
 export class Itinerary {
+  private readonly elementRef = inject<ElementRef<HTMLElement>>(ElementRef);
+
   protected readonly days = ITINERARY_DAYS;
   protected readonly selectedDayNumber = signal(1);
 
@@ -24,12 +26,27 @@ export class Itinerary {
 
   protected selectDay(day: number): void {
     this.selectedDayNumber.set(day);
+    this.scrollActiveTabIntoView();
   }
 
   protected stepDay(delta: number): void {
     const next = this.selectedDayNumber() + delta;
     if (next >= 1 && next <= this.days.length) {
       this.selectedDayNumber.set(next);
+      this.scrollActiveTabIntoView();
     }
+  }
+
+  private scrollActiveTabIntoView(): void {
+    if (typeof window === 'undefined') {
+      return;
+    }
+
+    queueMicrotask(() => {
+      const activeTab = this.elementRef.nativeElement.querySelector('.day-tab.active');
+      if (activeTab instanceof HTMLElement && typeof activeTab.scrollIntoView === 'function') {
+        activeTab.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      }
+    });
   }
 }

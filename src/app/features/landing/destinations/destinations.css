@@ -179,11 +179,38 @@
 @media (max-width: 38rem) {
   .destination-bento {
     grid-template-columns: 1fr;
+    gap: 0.9rem;
   }
 
-  .dest-card--cocora,
+  .dest-card {
+    min-height: 15.5rem;
+    padding: 1.2rem;
+    border-radius: 1.15rem;
+  }
+
+  .dest-card--navy,
+  .dest-card--sage {
+    min-height: 13.5rem;
+    gap: 1.35rem;
+  }
+
+  .dest-card--cocora {
+    grid-column: auto;
+    min-height: 16.5rem;
+  }
+
   .dest-card--eden {
     grid-column: auto;
-    min-height: 17rem;
+    min-height: auto;
+    padding: 0;
+  }
+
+  .eden-photo {
+    min-height: 13.5rem;
+    aspect-ratio: 16 / 10;
+  }
+
+  .eden-info {
+    padding: 1.25rem;
   }
 }

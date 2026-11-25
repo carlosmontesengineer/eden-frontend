@@ -1,4 +1,4 @@
-import { Component, computed, input, output, signal } from '@angular/core';
+import { Component, computed, effect, input, output, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RETREAT_CONTACT } from '../../../core/data/retreat.data';
 
@@ -7,6 +7,9 @@ import { RETREAT_CONTACT } from '../../../core/data/retreat.data';
   imports: [FormsModule],
   templateUrl: './reservation-modal.html',
   styleUrl: './reservation-modal.css',
+  host: {
+    '(document:keydown.escape)': 'onEscape()',
+  },
 })
 export class ReservationModal {
   readonly open = input.required<boolean>();
@@ -19,6 +22,21 @@ export class ReservationModal {
   protected readonly copied = signal(false);
 
   protected readonly contact = RETREAT_CONTACT;
+
+  constructor() {
+    effect((onCleanup) => {
+      if (!this.open() || typeof document === 'undefined') {
+        return;
+      }
+
+      const previousOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+
+      onCleanup(() => {
+        document.body.style.overflow = previousOverflow;
+      });
+    });
+  }
 
   protected readonly composedMessage = computed(() => {
     const name = this.guestName().trim() || 'Peregrino/a';
@@ -47,6 +65,12 @@ export class ReservationModal {
       await navigator.clipboard.writeText(this.composedMessage());
       this.copied.set(true);
       setTimeout(() => this.copied.set(false), 2500);
+    }
+  }
+
+  protected onEscape(): void {
+    if (this.open()) {
+      this.closeModal.emit();
     }
   }
 

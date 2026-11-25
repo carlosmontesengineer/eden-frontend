@@ -118,10 +118,74 @@ h2 {
 @media (max-width: 56rem) {
   .refuge-card {
     grid-template-columns: 1fr;
+    border-radius: 1.35rem;
+  }
+
+  .refuge-copy {
+    padding: 1.85rem 1.5rem;
   }
 
   .refuge-media {
-    min-height: 18rem;
-    padding-top: 0;
+    min-height: auto;
+    padding: 0 1.25rem 1.25rem;
+  }
+
+  .media-frame {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+@media (max-width: 38rem) {
+  .refuge-section {
+    padding-block: 0.75rem 2.75rem;
+  }
+
+  .refuge-copy {
+    padding: 1.5rem 1.15rem;
+  }
+
+  h2 {
+    font-size: clamp(1.85rem, 6vw, 2.6rem);
+    margin-bottom: 1.25rem;
+  }
+
+  .refuge-list {
+    gap: 1.05rem;
+  }
+
+  .refuge-list li {
+    gap: 0.8rem;
+  }
+
+  .refuge-icon {
+    flex: 0 0 2.4rem;
+    height: 2.4rem;
+    border-radius: 0.72rem;
+  }
+
+  .refuge-list p {
+    font-size: 0.93rem;
+    line-height: 1.56;
+  }
+
+  .refuge-media {
+    padding: 0 1rem 1rem;
+  }
+
+  .media-frame {
+    aspect-ratio: 4 / 3;
+    border-radius: 1rem;
+  }
+
+  .media-caption {
+    inset-inline: 0.7rem;
+    bottom: 0.7rem;
+    padding: 0.72rem 0.9rem;
+    border-radius: 0.75rem;
+  }
+
+  .media-caption strong {
+    font-size: 1.04rem;
+    line-height: 1.2;
   }
 }

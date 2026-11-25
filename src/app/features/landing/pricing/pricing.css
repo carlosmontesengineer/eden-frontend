@@ -151,5 +151,40 @@ h2 {
 @media (max-width: 54rem) {
   .price-layout {
     grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+
+  h2 {
+    max-width: none;
+  }
+
+  .coordinator-box {
+    max-width: none;
+    margin-top: 1.35rem;
+    padding: 1.1rem 1.2rem;
+  }
+}
+
+@media (max-width: 38rem) {
+  .pricing-section {
+    padding-block: 3rem;
+  }
+
+  .price-card {
+    padding: 1.35rem 1.15rem;
+    border-radius: 1.25rem;
+  }
+
+  .package-pill {
+    font-size: 0.69rem;
+    line-height: 1.35;
+    padding: 0.32rem 0.78rem;
+  }
+
+  .coordinator-box a,
+  .faq-jump a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.5rem;
   }
 }

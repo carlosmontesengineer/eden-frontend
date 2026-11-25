@@ -21,17 +21,33 @@
   --shadow-elevated: 0 24px 60px -20px rgba(14, 37, 59, 0.22);
 }
 
+html {
+  -webkit-tap-highlight-color: rgba(194, 149, 59, 0.16);
+}
+
 html,
 body {
   background: var(--color-background);
   color: var(--color-text);
   font-family: var(--font-body);
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
+h1,
+h2,
+h3,
+h4 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
 .page-width {
-  width: min(78rem, calc(100% - clamp(2rem, 8vw, 7rem)));
+  width: min(78rem, calc(100% - clamp(2rem, 6vw, 7rem)));
   margin-inline: auto;
 }
 
@@ -50,4 +66,11 @@ body {
 section[id],
 div[id] {
   scroll-margin-top: 5.5rem;
+}
+
+@media (max-width: 64rem) {
+  section[id],
+  div[id] {
+    scroll-margin-top: 4.85rem;
+  }
 }

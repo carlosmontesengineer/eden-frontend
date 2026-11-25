@@ -8,7 +8,7 @@
       </p>
     </div>
 
-    <ul class="experience-grid">
+    <ul class="experience-grid pillars-grid">
       @for (pillar of pillars; track pillar.id) {
         <li class="experience-card pillar-card">
           <div class="pillar-icon-wrap" aria-hidden="true">
@@ -53,7 +53,7 @@
         <p class="section-kicker">Arquitectura del Retiro</p>
         <h3 id="anatomy-title">La Anatomía de un Descanso Perfecto</h3>
         <p class="anatomy-subtitle">
-          Haz clic en cada círculo o nivel para descubrir cómo el entorno, nuestro equipo y la fe trabajan en armonía.
+          Explora cada nivel para descubrir cómo el entorno, nuestro equipo y la fe trabajan en armonía.
         </p>
       </div>
 
@@ -93,6 +93,11 @@
             <span class="core-label">Propósito Central</span>
             <p>{{ anatomyCore }}</p>
           </div>
+        </div>
+
+        <div class="anatomy-core-mobile">
+          <span class="core-label">Propósito Central</span>
+          <p>{{ anatomyCore }}</p>
         </div>
 
         <div class="anatomy-details">
